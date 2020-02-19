@@ -15,7 +15,7 @@ export default function Types() {
   return (
     <div className={classes.root}>
       <Typography variant="h1" component="h2">
-        Bitcoin Price Checker
+        Crypto Price Checker
       </Typography>
       <Typography variant="overline" display="block" gutterBottom>
         Using the Cryptonator API
