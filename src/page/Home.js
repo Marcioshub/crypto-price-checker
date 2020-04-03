@@ -15,7 +15,7 @@ export default function Types() {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h1" component="h2">
+      <Typography variant="h4" component="h4">
         Crypto Price Checker
       </Typography>
       <Typography variant="overline" display="block" gutterBottom>

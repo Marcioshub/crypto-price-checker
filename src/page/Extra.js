@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
 import Panel from "../components/Panels";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +23,13 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     margin: theme.spacing(4, 0, 2)
+  },
+  loading: {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    marginTop: "-50px",
+    marginLeft: "-100px"
   }
 }));
 
@@ -219,13 +227,21 @@ export default function InteractiveList() {
     // eslint-disable-next-line
   }, []);
 
-  return (
+  console.log(XRP_USD.success);
+
+  return BTC_USD.success &&
+    ETH_USD.success &&
+    BCH_USD.success &&
+    LTC_USD.success &&
+    DASH_USD.success &&
+    DOGE_USD.success &&
+    XMR_USD.success &&
+    XRP_USD.success ? (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="md">
         <div className={classes.root}>
           <Grid container spacing={2}>
-            {/******/}
             <Grow
               in={BTC_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -253,7 +269,7 @@ export default function InteractiveList() {
                 </div>
               </Grid>
             </Grow>
-            {/******/}
+
             <Grow
               in={ETH_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -282,7 +298,6 @@ export default function InteractiveList() {
               </Grid>
             </Grow>
 
-            {/******/}
             <Grow
               in={BCH_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -311,7 +326,6 @@ export default function InteractiveList() {
               </Grid>
             </Grow>
 
-            {/******/}
             <Grow
               in={LTC_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -340,7 +354,6 @@ export default function InteractiveList() {
               </Grid>
             </Grow>
 
-            {/******/}
             <Grow
               in={DASH_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -369,7 +382,6 @@ export default function InteractiveList() {
               </Grid>
             </Grow>
 
-            {/******/}
             <Grow
               in={DOGE_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -398,7 +410,6 @@ export default function InteractiveList() {
               </Grid>
             </Grow>
 
-            {/******/}
             <Grow
               in={DOGE_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -427,7 +438,6 @@ export default function InteractiveList() {
               </Grid>
             </Grow>
 
-            {/******/}
             <Grow
               in={DOGE_USD.success}
               style={{ transformOrigin: "0 0 0" }}
@@ -459,5 +469,254 @@ export default function InteractiveList() {
         </div>
       </Container>
     </React.Fragment>
+  ) : (
+    <div className={classes.loading}>
+      <CircularProgress color="secondary" size={200} />
+    </div>
   );
 }
+
+/*
+
+BTC_USD.success && ETH_USD.success && BCH_USD.success && LTC_USD.success && DASH_USD.success && DOGE_USD.success && XMR_USD.success && XRP_USD.success
+
+<React.Fragment>
+          <CssBaseline />
+      <Container maxWidth="md">
+        <div className={classes.root}>
+          <Grid container spacing={2}>
+            
+            <Grow
+              in={BTC_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 500 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  BTC-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${BTC_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${BTC_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${BTC_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={BTC_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+            
+            <Grow
+              in={ETH_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 1000 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  ETH-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${ETH_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${ETH_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${ETH_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={ETH_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+
+            
+            <Grow
+              in={BCH_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 1500 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  BCH-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${BCH_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${BCH_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${BCH_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={BCH_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+
+            <Grow
+              in={LTC_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 2000 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  LTC-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${LTC_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${LTC_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${LTC_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={LTC_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+
+            
+            <Grow
+              in={DASH_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 2000 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  DASH-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${DASH_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${DASH_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${DASH_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={DASH_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+
+            
+            <Grow
+              in={DOGE_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 2000 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  DOGE-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${DOGE_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${DOGE_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${DOGE_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={DOGE_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+
+            
+            <Grow
+              in={DOGE_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 2000 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  XMR-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${XMR_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${XMR_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${XMR_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={XMR_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+
+            
+            <Grow
+              in={DOGE_USD.success}
+              style={{ transformOrigin: "0 0 0" }}
+              {...{ timeout: 2000 }}
+            >
+              <Grid item xs={12} md={6}>
+                <Typography variant="h6" className={classes.title}>
+                  XRP-USD
+                </Typography>
+                <div className={classes.demo}>
+                  <List dense={false}>
+                    <ListItem>
+                      <ListItemText primary={`Price: $${XRP_USD.price}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Volume: ${XRP_USD.volume}`} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary={`Change: ${XRP_USD.change}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Panel markets={XRP_USD.markets} />
+                    </ListItem>
+                  </List>
+                </div>
+              </Grid>
+            </Grow>
+          </Grid>
+          </div>
+      </Container>
+      </React.Fragment>
+
+*/
